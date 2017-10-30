@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { DataService } from './services/data.service';
-
+import { Router } from '@angular/router';
+import { AuthService } from './services/auth.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,9 +8,16 @@ import { DataService } from './services/data.service';
 })
 export class AppComponent {
 
-  constructor(private dataService: DataService) { }
-
-  saveCSV(csv: string): void {
-    this.dataService.save(csv);
+  constructor(public authService: AuthService, private router: Router) {
+    this.authService.af.authState.subscribe(
+      (auth) => {
+        if (auth == null) {
+          this.router.navigate(['login']);
+        } else {
+          console.log(auth);
+          this.router.navigate(['']);
+        }
+      }
+    );
   }
 }
