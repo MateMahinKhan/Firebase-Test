@@ -9,11 +9,8 @@ import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { AngularFireDatabase } from 'angularfire2/database';
 
-// Implement barrels for making imports easier and groupable
-import { DataService } from './services/data.service';
-import { AuthService } from './services/auth.service';
-import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home/home.component';
+import { AuthService, DataService } from './services';
+import { HomeComponent, LoginComponent } from './';
 
 
 
